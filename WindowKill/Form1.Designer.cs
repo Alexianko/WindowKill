@@ -70,6 +70,8 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.TransparencyKey = System.Drawing.Color.Red;
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             this.canvas.ResumeLayout(false);
             this.canvas.PerformLayout();
             this.ResumeLayout(false);

@@ -20,6 +20,12 @@ namespace WindowKill
         private int _circleRadius = 40;
         private Point shootDirection;
 
+        int circleSpeed = 15;
+        bool wPress = false;
+        bool aPress = false;
+        bool sPress = false;
+        bool dPress = false;
+
         public Form1()
         {
             InitializeComponent();
@@ -48,6 +54,23 @@ namespace WindowKill
 
             shootDirection = new Point(MousePosition.X - Left - circleCenter.X, MousePosition.Y - Top - circleCenter.Y);
             canvas.Invalidate();
+
+            if (aPress)
+            {
+                circleCenter.X -= circleSpeed;
+            }
+            if (dPress)
+            {
+                circleCenter.X += circleSpeed;
+            }
+            if (wPress)
+            {
+                circleCenter.Y -= circleSpeed;
+            }
+            if (sPress)
+            {
+                circleCenter.Y += circleSpeed;
+            }
 
             //if (movingUp && y > 0)
             //    y -= circleSpeed;
@@ -118,7 +141,51 @@ namespace WindowKill
         private void canvas_MouseDown(object sender, MouseEventArgs e)
         {
             label1.Text = "nice";
-            circleCenter = new Point(MousePosition.X - Left, MousePosition.Y - Top);
+            //circleCenter = new Point(MousePosition.X - Left, MousePosition.Y - Top);
+        }
+
+
+
+
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.A || e.Modifiers == Keys.A)
+            {
+                aPress = true;
+            }
+            if (e.KeyCode == Keys.D || e.Modifiers == Keys.D)
+            {
+                dPress = true;
+            }
+            if (e.KeyCode == Keys.W || e.Modifiers == Keys.W)
+            {
+                wPress = true;
+            }
+            if (e.KeyCode == Keys.S || e.Modifiers == Keys.S)
+            {
+                sPress = true;
+            }
+        }
+
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.A || e.Modifiers == Keys.A)
+            {
+                aPress = false;
+            }
+            if (e.KeyCode == Keys.D || e.Modifiers == Keys.D)
+            {
+                dPress = false;
+            }
+            if (e.KeyCode == Keys.W || e.Modifiers == Keys.W)
+            {
+                wPress = false;
+            }
+            if (e.KeyCode == Keys.S || e.Modifiers == Keys.S)
+            {
+                sPress = false;
+            }
         }
     }
 }
